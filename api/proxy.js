@@ -1,7 +1,7 @@
 /*
  * @Description: 
  * @Date: 2021-02-19 18:57:07
- * @LastEditTime: 2021-11-10 17:28:44
+ * @LastEditTime: 2021-11-10 17:33:09
  * @FilePath: /question-daily/api/proxy.js
  * @LastEditors: LiJiapeng
  */
@@ -10,9 +10,12 @@ const { createProxyMiddleware } = require('http-proxy-middleware')
 module.exports = (req, res) => {
   let target = ''
 
-  // 这里使用 backend 主要用于区分 vercel serverless 的 api 路径
-  if (req.url.startsWith('/api')) {
-    target = 'https://biztest.chunyutianxia.com/'
+  if (req.url.startsWith('/cy/api')) {
+    target = 'https://biztest.chunyutianxia.com'
+  }
+
+  if (req.url.startsWith('/cy/devops')) {
+    target = 'https://devops.chunyutianxia.com'
   }
 
   // 创建代理对象并转发请求
@@ -20,7 +23,7 @@ module.exports = (req, res) => {
     target,
     changeOrigin: true,
     pathRewrite: {
-      '^/api': '/'
+      '^/cy/': '/'
     }
   })(req, res)
 }
