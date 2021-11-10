@@ -1,7 +1,7 @@
 /*
  * @Description: 
  * @Date: 2021-02-19 18:57:07
- * @LastEditTime: 2021-11-10 17:33:09
+ * @LastEditTime: 2021-11-10 17:37:50
  * @FilePath: /question-daily/api/proxy.js
  * @LastEditors: LiJiapeng
  */
@@ -23,7 +23,8 @@ module.exports = (req, res) => {
     target,
     changeOrigin: true,
     pathRewrite: {
-      '^/cy/': '/'
+      '^/cy/api/': '/',
+      '^/cy/devops/': '/',
     }
   })(req, res)
 }
