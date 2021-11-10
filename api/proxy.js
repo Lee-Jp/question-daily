@@ -1,7 +1,7 @@
 /*
  * @Description: 
  * @Date: 2021-02-19 18:57:07
- * @LastEditTime: 2021-11-10 17:37:50
+ * @LastEditTime: 2021-11-10 17:47:16
  * @FilePath: /question-daily/api/proxy.js
  * @LastEditors: LiJiapeng
  */
@@ -14,9 +14,9 @@ module.exports = (req, res) => {
     target = 'https://biztest.chunyutianxia.com'
   }
 
-  if (req.url.startsWith('/cy/devops')) {
-    target = 'https://devops.chunyutianxia.com'
-  }
+  // if (req.url.startsWith('/cy/devops')) {
+  //   target = 'https://devops.chunyutianxia.com'
+  // }
 
   // 创建代理对象并转发请求
   createProxyMiddleware({
